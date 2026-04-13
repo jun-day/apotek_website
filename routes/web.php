@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('backend.login');
 });
+
+// login
+Route::get('backend/login', [LoginController::class, 'loginBackend'])->name('backend.login');
+Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login');
+Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
