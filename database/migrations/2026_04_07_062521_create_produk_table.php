@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('produk', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->foreignid()->constrained('kategori');
+            $table->foreignId('kategori_id')->constrained('kategori');
             $table->string('sku');
             $table->string('name');
             $table->string('generic_name');
@@ -27,9 +26,9 @@ return new class extends Migration
             $table->text('dosage_instruction');
             $table->string('storage_instruction');
             $table->string('bpom_number');
-            $table->enum('drug_class');
+            $table->enum('drug_class', ['obat_bebas', 'obat_bebas_terbatas', 'obat_keras', 'obat_psikotropika_narkotika', 'herbal']);
             $table->boolean('requires_prescription');
-            $table->enum('dosage_form');
+            $table->enum('dosage_form', ['tablet', 'kapsul', 'serbuk', 'sirup', 'injeksi', 'tetes', 'krim', 'salep', 'gel']);
             $table->string('strength');
             $table->string('unit');
             $table->string('unit_contains');
@@ -44,9 +43,10 @@ return new class extends Migration
             $table->date('expired_date');
             $table->boolean('is_active');
             $table->boolean('is_featured');
-            $table->interger('sold_count');
+            $table->integer('sold_count');
             $table->decimal('rating_avg', 3, 2);
-            $table->interger('rating_count');
+            $table->integer('rating_count');
+            $table->timestamps();
         });
     }
 
