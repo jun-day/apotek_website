@@ -16,13 +16,15 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Logo">
                 </div>
                 <p class="title">L o g i n</p>
-                <form class="form">
-                    <input type="email" class="input" placeholder="Email">
-                    <input type="password" class="input" placeholder="Password">
+                <form class="form" action=" {{ route('backend.login') }}" method="POST">
+                    @csrf
+                    <input type="email" name="email" class="input" placeholder="Email" required>
+                    <input type="password" name="email" class="input" placeholder="Password" required>
+
                     <p class="page-link">
                     <span class="page-link-label">Forgot Password ?</span>
                     </p>
-                    <button class="form-btn">Log in</button>
+                    <button type="submit" class="form-btn">Log in</button>
                 </form>
                 <p class="sign-up-label">
                     Belum memiliki akun ?<span class="sign-up-link">Sign up</span>

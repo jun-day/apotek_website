@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend_Controller\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,10 @@ Route::get('/', function () {
 });
 
 // login
+Route::get('seller/dashboard', [DashboardController::class, 'index'])->name('seller.dashboard');
+
 Route::get('backend/login', [LoginController::class, 'loginBackend'])->name('backend.login');
-Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login');
+
+Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login.post');
+
 Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');

@@ -12,13 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('produk', function (Blueprint $table) {
+            //Relasi & identitas
             $table->id();
             $table->foreignId('kategori_id')->constrained('kategori');
             $table->string('sku');
+            //Informasi nama & merek
             $table->string('name');
             $table->string('generic_name');
             $table->string('brand');
             $table->text('description');
+            //Informasi farmasi
             $table->text('composition');
             $table->text('indications');
             $table->text('contraindications');
@@ -26,26 +29,31 @@ return new class extends Migration
             $table->text('dosage_instruction');
             $table->string('storage_instruction');
             $table->string('bpom_number');
-            $table->enum('drug_class', ['obat_bebas', 'obat_bebas_terbatas', 'obat_keras', 'obat_psikotropika_narkotika', 'herbal']);
-            $table->boolean('requires_prescription');
+            // Klasifikasi obat
+            $table->enum('regulation_class', ['obat_bebas','obat_bebas_terbatas','obat_keras','obat_psikotropika_narkotika', 'herbal']);
+            $table->json('pharmacological_class')->nullable();
+            $table->boolean('requires_prescription')->default(false);
             $table->enum('dosage_form', ['tablet', 'kapsul', 'serbuk', 'sirup', 'injeksi', 'tetes', 'krim', 'salep', 'gel']);
             $table->string('strength');
             $table->string('unit');
             $table->string('unit_contains');
+            //Harga
             $table->decimal('price', 12, 2);
             $table->decimal('compare_price', 12, 2);
             $table->decimal('cost_price', 12, 2);
             $table->decimal('het_price', 12, 2);
-            $table->integer('stock');
+            //Stok & logistik
+            $table->integer('stock')->default(0);
             $table->integer('min_stock_alert');
             $table->integer('max_purchase_qty');
             $table->integer('weight_gram');
             $table->date('expired_date');
-            $table->boolean('is_active');
-            $table->boolean('is_featured');
-            $table->integer('sold_count');
-            $table->decimal('rating_avg', 3, 2);
-            $table->integer('rating_count');
+            // Statistik & visibilitas
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_featured')->default(false);
+            $table->integer('sold_count')->default(0);
+            $table->decimal('rating_avg', 3, 2)->default(0);
+            $table->integer('rating_count')->default(0);
             $table->timestamps();
         });
     }

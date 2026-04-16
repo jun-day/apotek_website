@@ -15,14 +15,14 @@
 
         <p class="menu-title">Main Menu</p>
         <ul>
-            <li>Dashboard</li>
-            <li class="active">Produk</li>
-            <li>Pesanan</li>
-            <li>Resep</li>
-            <li>Pengiriman</li>
-            <li>Keuangan</li>
-            <li>Ulasan</li>
-            <li>Laporan</li>
+            <li class="sidebar_item"><a href="{{ route('backend.dashboard')">Dashboard</a></li>
+            <li class="sidebar_item"><a href="{{ route('backend.produk')">Produk</a></li>
+            <li class="sidebar_item"><a href="{{ route('backend.pesanan')">Pesanan</a></li>
+            <li class="sidebar_item"><a href="{{ route('backend.resep')">Resep</a></li>
+            <li class="sidebar_item"><a href="{{ route('backend.pengriman')">Pengiriman</a></li>
+            <li class="sidebar_item"><a href="{{ route('backend.keuangan')">Keuangan</a></li>
+            <li class="sidebar_item"><a href="{{ route('backend.ulasan')">Ulasan</a></li>
+            <li class="sidebar_item"><a href="{{ route('backend.laporan')">Laporan</a></li>
         </ul>
 
         <p class="menu-title">Others</p>
@@ -36,12 +36,11 @@
         <div class="header">
             <div class="nav-left">
                 <input type="text" placeholder="Search..." class="search">
-                <span class="shortcut">⌘ + S</span>
             </div>
 
             <div class="nav-right">
-                <span class="icon">💬</span>
-                <span class="icon">🔔</span>
+                <span class="icon">icon pesan</span>
+                <span class="icon">icon bel</span>
 
                 <div class="profil">
                     <img src="{{ asset('images/logo.png') }}">
